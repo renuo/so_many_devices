@@ -60,7 +60,7 @@ of course, your tests need to run on so many devices!
  
 ## Available devices
 
-Check [the YML file containing all the devices](./lib/so_many_devices/so_many_devices.yml). So many!
+Check [the YML file containing all the devices](./lib/so_many_devices.yml). So many!
 
 ## Development
 
@@ -73,7 +73,7 @@ which will create a git tag for the version, push git commits and tags, and push
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/renuo/so_many_devices. 
+Bug reports and pull requests are welcome on GitHub at <https://github.com/renuo/so_many_devices>. 
 This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/renuo/so_many_devices/blob/master/CODE_OF_CONDUCT.md).
 
 Do you think our devices are not that many? 😡
@@ -91,4 +91,4 @@ Everyone interacting in the SoManyDevices project's codebases, issue trackers, c
 
 ## Special Thanks
 
-[![Renuo AG](/logo/renuo.png)](https://renuo.ch)
+[![Renuo AG](./logo/renuo.png)](https://www.renuo.ch)
