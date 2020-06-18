@@ -29,7 +29,7 @@ In your `rails_helper.rb` you can configure your preferred device for tests:
 
 ```ruby
 config.before(:each, type: :system, js: true) do
-    driven_by :iphone_6_7_8
+  driven_by :iphone_6_7_8
 end
 ```
 
@@ -37,7 +37,7 @@ You can always use the headless version of each device by appending `_headless` 
 
 ```ruby
 config.before(:each, type: :system, js: true) do
-    driven_by :iphone_6_7_8_headless
+  driven_by :iphone_6_7_8_headless
 end
 ```
 
@@ -45,7 +45,7 @@ We use it to run our system tests on so many devices! Here is our standard confi
 
 ```ruby
 config.before(:each, type: :system, js: true) do
-    driven_by ENV['SELENIUM_DRIVER'].to_sym
+  driven_by ENV['SELENIUM_DRIVER'].to_sym
 end
 ```
 
@@ -61,6 +61,34 @@ of course, your tests need to run on so many devices!
 ## Available devices
 
 Check [the YML file containing all the devices](./lib/so_many_devices/so_many_devices.yml). So many!
+
+## Chrome with downloads capabilities
+
+We provide also an instance of Chrome already configured with 
+Downloads capabilities and a `SoManyDevices::DownloadsHelper` that you can use in your project.
+
+Use the following:
+
+```ruby
+config.before(:each, type: :system, js: true) do
+  driven_by :selenium_chrome_with_download_headless # or non-headless version
+end
+
+config.include SoManyDevices::DownloadsHelper, type: :system
+```
+
+and in your test (just an example...):
+
+```ruby
+it 'can download a file', :js do
+  visit funny_page_path
+  click_link 'Download PDF'
+  wait_for_download
+  expect(downloads.length).to eq(1)
+  expect(download).to match(/.*\.pdf/)
+end
+```
+
 
 ## Development
 
