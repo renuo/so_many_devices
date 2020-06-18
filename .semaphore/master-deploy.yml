@@ -16,4 +16,4 @@ blocks:
             - checkout --use-cache
             - gem build so_many_devices
             - chmod 0600 ~/.gem/credentials
-            - gem push renuo-cli-*.gem
+            - gem push so_many_devices-*.gem
