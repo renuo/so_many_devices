@@ -1,5 +1,7 @@
 # So Many Devices! 🕺
 
+[https://renuo.semaphoreci.com/badges/so_many_devices.svg](https://renuo.semaphoreci.com/projects/so_many_devices)
+
 This gem provides a list of Capybara Selenium configurations that you can use.
 Probably useful to run your system tests on different devices.
 
