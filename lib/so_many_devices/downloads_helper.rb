@@ -1,7 +1,7 @@
 module SoManyDevices
   module DownloadsHelper
     TIMEOUT = 10
-    PATH = "#{Dir.pwd}/tmp/downloads/"
+    PATH = "#{Dir.pwd}/tmp/downloads"
 
     def downloads
       Dir["#{PATH}/*"]
