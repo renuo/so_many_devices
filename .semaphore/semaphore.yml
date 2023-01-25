@@ -15,7 +15,7 @@ blocks:
     dependencies: []
     task:
       secrets:
-        - name: so_many_devices
+        - name: bundle-github
       env_vars:
         - name: RAILS_ENV
           value: test

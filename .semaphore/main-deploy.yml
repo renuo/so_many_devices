@@ -9,6 +9,7 @@ blocks:
   - name: main-deploy
     task:
       secrets:
+        - name: bundle-github
         - name: rubygems-deploy
       jobs:
         - name: main-deploy
