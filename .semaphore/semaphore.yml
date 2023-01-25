@@ -14,8 +14,6 @@ blocks:
       minutes: 10
     dependencies: []
     task:
-      secrets:
-        - name: bundle-github
       env_vars:
         - name: RAILS_ENV
           value: test
