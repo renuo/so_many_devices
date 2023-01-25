@@ -76,6 +76,10 @@ config.before(:each, type: :system, js: true) do
   driven_by :selenium_chrome_with_download_headless # or non-headless version
 end
 
+config.after(:each, type: :system, js: true) do
+  clear_downloads
+end
+
 config.include SoManyDevices::DownloadsHelper, type: :system
 ```
 
@@ -87,10 +91,34 @@ it 'can download a file', :js do
   click_link 'Download PDF'
   wait_for_download
   expect(downloads.length).to eq(1)
-  expect(download).to match(/.*\.pdf/)
+  expect(last_download).to match(/.*\.pdf/)
+  last_pdf = File.read(last_download)
 end
 ```
 
+If you prefer to use this driver only on selected tests, you can use the following:
+
+```ruby
+config.before(:each, type: :system, js: true, with_downloads: true) do
+  driven_by :selenium_chrome_with_download_headless
+end
+
+config.after(:each, type: :system, js: true, with_downloads: true) do
+  clear_downloads
+end
+
+config.include SoManyDevices::DownloadsHelper, type: :system
+```
+
+and in your test (just an example...):
+
+```ruby
+it 'can download a file', :js, :with_downloads do
+end
+```
+
+The call to `clear_downloads` makes sure that all the downloads are removed from the downloads folder.
+All downloads are performed in the `tmp/downloads` folder of your project.
 
 ## Development
 

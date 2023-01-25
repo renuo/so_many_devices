@@ -17,5 +17,7 @@ RSpec.describe SoManyDevices::DownloadsHelper do
     expect(downloads).to eq([])
     FileUtils.touch(test_file)
     expect(downloads.first).to end_with('example.txt')
+    expect(first_download).to eq(downloads.first)
+    expect(last_download).to eq(downloads.last)
   end
 end

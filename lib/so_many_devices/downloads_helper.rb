@@ -11,6 +11,14 @@ module SoManyDevices
       downloads.first
     end
 
+    def first_download
+      downloads.first
+    end
+
+    def last_download
+      downloads.last
+    end
+
     def download_content
       wait_for_download
       File.read(download)
