@@ -132,7 +132,7 @@ which will create a git tag for the version, push git commits and tags, and push
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at <https://github.com/renuo/so_many_devices>. 
-This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/renuo/so_many_devices/blob/master/CODE_OF_CONDUCT.md).
+This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/renuo/so_many_devices/blob/main/CODE_OF_CONDUCT.md).
 
 Do you think our devices are not that many? 😡
 
@@ -144,7 +144,7 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the SoManyDevices project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/renuo/so_many_devices/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the SoManyDevices project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/renuo/so_many_devices/blob/main/CODE_OF_CONDUCT.md).
 
 
 ## Special Thanks
