@@ -1,4 +1,5 @@
 require "bundler/setup"
+require "selenium-webdriver"
 require "so_many_devices"
 
 RSpec.configure do |config|

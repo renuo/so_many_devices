@@ -1,4 +1,14 @@
-## [0.3.0] - 2023-01-25
+# Changelog
+
+## [2.0.0] - Unreleased
+
+- **Breaking**: require Ruby 3.3 or newer.
+- **Breaking**: all drivers run Chrome with `--force-prefers-reduced-motion`.
+- Fix device drivers on Selenium 4, which no longer provides `Remote::Capabilities.chrome` and `desired_capabilities:`.
+- Register the Chrome drivers with downloads only once, instead of once per device.
+- Release from Semaphore when a version tag is pushed.
+
+## [1.0.0] - 2023-01-25
 
 - Added two new methods `first_download` and `last_download`.
 - Added more instructions to the README for Chrome with downloads options, in particular to clean up folders.
