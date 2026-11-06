@@ -43,6 +43,9 @@ config.before(:each, type: :system, js: true) do
 end
 ```
 
+All drivers run Chrome with `--force-prefers-reduced-motion`, so pages honouring `prefers-reduced-motion`
+skip their animations and transitions, which makes tests faster and less flaky.
+
 We use it to run our system tests on so many devices! Here is our standard configuration:
 
 ```ruby
@@ -122,12 +125,24 @@ All downloads are performed in the `tmp/downloads` folder of your project.
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. 
-Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+After checking out the repo, run `bin/setup` to install dependencies.
+Then, run `bin/check` to run the tests and `bin/fastcheck` to run the linter.
+You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
-To install this gem onto your local machine, run `bundle exec rake install`. 
-To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, 
-which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+### Release
+
+1. Bump the version in `lib/so_many_devices/version.rb`, run `bundle install`, update `CHANGELOG.md` and commit to `main`.
+2. Tag the commit with the bare version and push the tag:
+
+   ```bash
+   git tag -a 1.2.3 -m 1.2.3
+   git push origin 1.2.3
+   ```
+
+3. Create a GitHub release for the tag with the changelog section as notes.
+
+Semaphore runs the tests on the tag and, when they pass, promotes the `release` pipeline, which pushes the gem to
+[rubygems.org](https://rubygems.org). It fails when the tag does not match the gem version.
 
 ## Contributing
 
