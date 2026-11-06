@@ -2,30 +2,49 @@ version: "v1.0"
 name: so_many_devices
 agent:
   machine:
-    type: e1-standard-2
-    os_image: ubuntu1804
+    type: f1-standard-2
+    os_image: ubuntu2404
 auto_cancel:
   running:
     when: "true"
 
+global_job_config:
+  prologue:
+    commands:
+      - checkout --use-cache
+      - sem-version ruby $RUBY_VERSION -f
+      - cache restore gems-$RUBY_VERSION-$(checksum Gemfile.lock)
+      - bundle config set path 'vendor/bundle'
+      - bundle install -j 4
+      - cache store gems-$RUBY_VERSION-$(checksum Gemfile.lock) vendor/bundle
+
 blocks:
+  - name: linter
+    execution_time_limit:
+      minutes: 5
+    dependencies: []
+    task:
+      env_vars:
+        - name: RUBY_VERSION
+          value: "3.4"
+      jobs:
+        - name: fastcheck
+          commands:
+            - bin/fastcheck
   - name: tests
     execution_time_limit:
       minutes: 10
     dependencies: []
     task:
-      env_vars:
-        - name: RAILS_ENV
-          value: test
       jobs:
-        - name: tests
+        - name: check
+          matrix:
+            - env_var: RUBY_VERSION
+              values: ["3.3", "3.4", "4.0"]
           commands:
-            - checkout --use-cache
-            - cache restore
-            - bundle install -j 4 --path vendor/bundle
-            - cache store
-            - bundle exec standardrb
-            - bundle exec rspec
+            - bin/check
 promotions:
-  - name: main
-    pipeline_file: main-deploy.yml
+  - name: release
+    pipeline_file: release.yml
+    auto_promote:
+      when: "result = 'passed' and tag =~ '^[0-9]+[.][0-9]+[.][0-9]+$'"
