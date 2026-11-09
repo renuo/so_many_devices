@@ -1,5 +1,9 @@
 # Changelog
 
+## [Unreleased]
+
+- Use current Safari and Chrome user agents, so that Rails `allow_browser versions: :modern` does not block the devices.
+
 ## [2.0.0] - 2026-11-06
 
 - **Breaking**: require Ruby 3.3 or newer.
